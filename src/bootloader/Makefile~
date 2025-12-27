@@ -1,3 +1,0 @@
-ASM := nasm
-
-$(ASM) -f bin boot.asm -o boot.bin
