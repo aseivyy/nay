@@ -1,2 +1,6 @@
 boot.img
 **/*.bin
+**/*.asm~
+**/Makefile~
+**/*.sh~
+**/.gitignore~
