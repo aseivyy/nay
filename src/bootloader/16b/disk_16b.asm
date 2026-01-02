@@ -1,3 +1,18 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 												;;
+;;	Function to read sectors from the disk							;;
+;;		In:										;;
+;;			al: 	Number of sectors to read (1 - 128)				;;
+;; 			ch: 	Cylinder number (0 - 1023)					;;
+;; 			cl: 	First sector number to read					;;
+;;			dh: 	Head number (0 - 15)						;;
+;; 			dl: 	Drive type (Set on boot)					;;
+;; 			es:bx:	Pointer in memory where things from the disk should be placed	;;
+;; 		Out:										;;
+;;			Sector(s) placed in memory on success					;;
+;; 												;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	
 	[bits 16]
 
 disk_16b:
@@ -43,7 +58,7 @@ disk_16b_fail:
 
 disk_16b_fatal:
 	mov bx, 0xDFFF
-	call print_textm_hex
+	call print_textm_hex_16b
 	jmp $
 
 	
