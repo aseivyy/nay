@@ -12,7 +12,7 @@ boot:
 
 	mov byte[DRIVE_NUMBER], dl
 
-	mov al, 0x04
+	mov al, 0x05
 	mov ch, 0x00
 	mov cl, 0x02
 	mov dh, 0x00
@@ -36,11 +36,12 @@ boot_16b_extended:
 	call memmap_16b
 	mov si, di
 	call print_textm_memtable_16b
-	
-	jmp $
+	call upmode_32b
 
 	%include "16b/print_textm_fullhex_16b.asm"
 	%include "16b/print_textm_memtable_16b.asm"
+	%include "16b/upmode_32b.asm"
+	%include "16b/gdt_32b.asm"
 	
 	times 512 - ($ - boot_16b_extended) db 0
 	
@@ -119,3 +120,19 @@ memorymap_e1_eacpiattr:			dd 0
 
 times (512 - (1 * 24)) db 0
 
+	[bits 32]
+
+boot_32b:
+	call clear_textm_32b
+	mov ebx, MSG_TEST32
+	call print_textm_32b
+
+	
+	jmp $
+
+	%include "32b/clear_textm_32b.asm"
+	%include "32b/print_textm_32b.asm"
+	
+MSG_TEST32:	db `Hiii <3`, 0
+
+	times 512 - ($ - boot_32b) db 0

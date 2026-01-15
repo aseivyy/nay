@@ -1,3 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 												;;
+;;	Function to print the memory table							;;
+;;		In:										;;
+;;			si: 	Location of the memory table (Last entry must be zeros)		;;
+;; 		Out:										;;
+;;			Cleared screen, memory map printed					;;
+;; 												;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+	[bits 16]
+
 print_textm_memtable_16b:
 	push eax
 	push ebx
