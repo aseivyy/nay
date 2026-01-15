@@ -12,30 +12,38 @@ boot:
 
 	mov byte[DRIVE_NUMBER], dl
 
-	mov al, 0x02
+	mov al, 0x04
 	mov ch, 0x00
 	mov cl, 0x02
 	mov dh, 0x00
 	mov bx, 0x7e00
 	call disk_16b
-
-	mov ax, 1024
-	mov bx, 768
-	mov cl, 32
-	call video_setup_16b
 	
-	jmp $
+	jmp boot_16b_extended
 
-	%include "16b/video_setup_16b.asm"
 	%include "16b/print_textm_hex_16b.asm"
 	%include "16b/disk_16b.asm"
+	%include "16b/print_textm_16b.asm"
+	%include "16b/memmap_16b.asm"
 
 DRIVE_NUMBER:			db 0
 	
 	times 510 - ($ - $$) db 0
 	dw 0xaa55
 
+boot_16b_extended:
+	mov di, memorymap
+	call memmap_16b
+	mov si, di
+	call print_textm_memtable_16b
+	
+	jmp $
 
+	%include "16b/print_textm_fullhex_16b.asm"
+	%include "16b/print_textm_memtable_16b.asm"
+	
+	times 512 - ($ - boot_16b_extended) db 0
+	
 	
 VESA_RETURN:	
 VESARETURN_SIGNATURE:			db 'VBE2'
@@ -93,9 +101,21 @@ VESA_MODE_RETURN_RESERVED1:		times 206 db 0
 
 
 
-VESASCREEN_WIDTH:		dw 0
-VESASCREEN_HEIGHT:		dw 0
-VESASCREEN_FRAMEBUFFER:		dd 0
-VESASCREEN_BYTESPERSCANLINE:	dw 0
+VESASCREEN_WIDTH:			dw 0
+VESASCREEN_HEIGHT:			dw 0
+VESASCREEN_FRAMEBUFFER:			dd 0
+VESASCREEN_BYTESPERSCANLINE:		dw 0
 
 times (256 - 10) db 0
+
+
+memorymap:
+memorymap_e1_baselow:			dd 0
+memorymap_e1_basehigh:			dd 0
+memorymap_e1_lengthlow:			dd 0
+memorymap_e1_lengthhigh:		dd 0
+memorymap_e1_type:			dd 0
+memorymap_e1_eacpiattr:			dd 0
+
+times (512 - (1 * 24)) db 0
+
