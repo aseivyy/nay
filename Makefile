@@ -17,4 +17,3 @@ image:
 
 clean:
 	rm src/kernel/kernel
-	rm src/kernel/kernel.elf

@@ -2,3 +2,5 @@ boot.img
 **/*.bin
 bochsrc.txt
 image.img
+**/*.o
+src/kernel/kernel
