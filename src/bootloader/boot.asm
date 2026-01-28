@@ -1,7 +1,12 @@
 	[org 0x7c00]
-	[bits 16]
 
+	jmp boot
+	
+skernel:	db 0
+	
 boot:
+	[bits 16]
+	
 	xor ax, ax
 	mov ss, ax
 	mov ds, ax
@@ -12,7 +17,8 @@ boot:
 
 	mov byte[DRIVE_NUMBER], dl
 
-	mov al, 0x05
+	mov al, 0x06
+	add al, [skernel]
 	mov ch, 0x00
 	mov cl, 0x02
 	mov dh, 0x00
@@ -44,7 +50,6 @@ boot_16b_extended:
 	%include "16b/gdt_32b.asm"
 	
 	times 512 - ($ - boot_16b_extended) db 0
-	
 	
 VESA_RETURN:	
 VESARETURN_SIGNATURE:			db 'VBE2'
@@ -123,16 +128,26 @@ times (512 - (1 * 24)) db 0
 	[bits 32]
 
 boot_32b:
-	call clear_textm_32b
-	mov ebx, MSG_TEST32
-	call print_textm_32b
-
+	call archcheck_32b
+	call paging_64b
+	call upmode_64b
 	
 	jmp $
 
-	%include "32b/clear_textm_32b.asm"
-	%include "32b/print_textm_32b.asm"
-	
-MSG_TEST32:	db `Hiii <3`, 0
+	;; %include "32b/clear_textm_32b.asm"
+	;; %include "32b/print_textm_32b.asm"
+	%include "32b/archcheck_32b.asm"
+	%include "32b/gdt_64b.asm"
+	%include "32b/paging_64b.asm"
+	%include "32b/upmode_64b.asm"
 
 	times 512 - ($ - boot_32b) db 0
+
+	[bits 64]
+	
+boot_64b:
+	call 0x8A00
+	
+	jmp $
+
+	times 512 - ($ - boot_64b) db 0

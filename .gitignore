@@ -1,3 +1,4 @@
 boot.img
 **/*.bin
 bochsrc.txt
+image.img
