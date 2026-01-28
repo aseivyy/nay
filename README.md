@@ -25,6 +25,8 @@ Anything supporting following packages [command] in general:
 For emulating with build-in qemu.sh:
 - qemu-full [qemu-system-x86_64]
 
+---
+
 The package names was checked on arch linux, so I added the comamnd names too so if it changes you can adjust easly. Or just run the makefile and look for "command not found" errors and install whatever it wants
 
 If you are reading this have a good day <3
