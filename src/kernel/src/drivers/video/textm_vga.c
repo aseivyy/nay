@@ -68,9 +68,10 @@ void textmvga_writechar(byte_t character, byte_t appearance, word_t pos, word_t 
 			*counterlocationptr += TEXTMVGA_WIDTH - 1;
 		}
 	} else {
-		textmvga_char linebefore = vga_area[(*counterlocationptr / TEXTMVGA_WIDTH) * TEXTMVGA_HEIGHT];
+		/* Fixed the bug where it would not use the background appearance, i probably copied and pasted the code from the textmvga_scrool(), but keeping the old thing commented in case me fixing will cause another bug. Appearance was linebefore.appearance. */
+		/* textmvga_char linebefore = vga_area[(*counterlocationptr / TEXTMVGA_WIDTH) * TEXTMVGA_HEIGHT]; */
 		vga_area[*counterlocationptr].character = character;
-		vga_area[*counterlocationptr].appearance = linebefore.appearance;
+		vga_area[*counterlocationptr].appearance = appearance;
 	}
 }
 

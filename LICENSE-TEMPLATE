@@ -1,0 +1,49 @@
+Hi, if you want to use the same license that this thing is using, you can and I am grateful that you liked it.
+
+Generally, if you wish to make changes in places not specified below, please either don't use the name of this license (by changing line 1), or add " E" after the last character in the first line.
+
+This license follow changes on 2 numbers, the first one is incremented on a major change of the license, second one is incremented after things like fixing a typo, not changing the meaning of the license.
+
+Examples provided have been used for a better look, should not be used in your license
+
+----------------------------------------------
+
+Description of version 1.0:
+Line 1 - Should not be changed, describes version of this license.
+Line 2 - Keep "USED BY ", then add whatever you wish in uppercase, like the name of your program
+Line 3 - Should be an empty line
+Line 4 - Should not be changed
+Line 5 - Should be an empty line
+Line 6 - Should not be changed, makes you not responsible for anything releated to whatever your program will do or be used to do
+Line 7 and next - Should only be empty lines, not required.
+
+Example:
+
+	NAY BI LICENSE v1.0.0
+	USED BY MY PROGRAM, AT THIS GITHUB REPOSITORY
+
+	Do whatever you want with it, have fun
+
+	This program and the source code is provided as it is, and I am not responsible for any damage or harm done using it or done by it
+
+Example of edited license:
+
+	NAY BI LICENSE v1.0.0 E
+	USED BY MY PROGRAM, AT MY WEBSITE
+
+	You are free to do anything with my software
+
+	This program and the source code is provided as it is, and I am not responsible for any damage or harm done using it or done by it
+
+Another example of edited license:
+
+	My license v1
+	USED BY MY PROGRAM, AT MY WEBSITE
+
+	You are free to do anything with my software
+
+	This program and the source code is provided as it is, and I am not responsible for any damage or harm done using it or done by it
+
+----------------------------------------------
+
+Have a good day, wishing you luck with your project
