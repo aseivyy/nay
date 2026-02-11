@@ -118,3 +118,22 @@ void textmvga_writestring(byte_t *string, byte_t foreground, byte_t background) 
 	textmvga_cursor_relocate(0, 0, i);
 }
 
+void textmvga_writehex(qword_t hex, byte_t foreground, byte_t background) {
+	byte_t print[19];
+	print[0] = '0';
+	print[1] = 'x';
+	print[18] = 0;
+	
+	for (byte_t i = 2; i <= 17; i++) {
+		byte_t current = hex >> 60;
+		if (current > 9) {
+			current -= 10;
+			print[i] = (byte_t) ('a' + current);
+		} else {
+			print[i] = (byte_t) ('0' + current);
+		}
+
+		hex = hex << 4;
+	}
+	textmvga_writestring(print, foreground, background);
+}

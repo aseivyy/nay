@@ -41,5 +41,6 @@ void textmvga_cursor_disable();
 
 void textmvga_clear(byte_t foreground, byte_t background);
 void textmvga_writestring(byte_t *string, byte_t foreground, byte_t background);
+void textmvga_writehex(qword_t hex, byte_t foreground, byte_t background);
 
 #endif
