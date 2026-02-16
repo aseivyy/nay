@@ -4,6 +4,8 @@ This is my bootable thingy, named "nay bi", where "bi" stands for "bootable inte
 
 For now it does kind of nothing except being able to show a "light"coded text (? i don't know how to name it, there is a driver but only for vga but not user input from actually human running it), but I guess you have to do foundation first before going further. And it isn't going to be soon, for now I plan it when doing userspace things.
 
+This is the new version, existing as an efi app, so it could boot in the future on real device
+
 ## Anyways, guide to how to build
 1. Run "make" in root directory
 

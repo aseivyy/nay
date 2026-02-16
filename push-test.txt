@@ -1,1 +1,20 @@
 push test
+
+not really a push test message, but i have to say it, i am so happy right now,
+I have used past hours to migrate to uefi with just compiling a function that 
+just returns with etk2, and I am literally doing this thing just because
+I don't have to use all those headers or whatever, and the point of nay
+is to be free of whatever and licensing things, and generally be something
+that is independent (same reason I haven't used grub, limine or whatever), 
+and I just discovered that I don't have to use it and I am so happy,
+I hope it will work
+
+i hate headers and libraries to be honest, just give me the system table 
+without all of these different things
+
+you couldn't imagine what I have written in the new readme file about
+my opinion on it, it was so long and list of things that you had to do
+to just setup the build was huge too and I hated it so much
+
+have a good day
+
